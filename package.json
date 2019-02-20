@@ -1,0 +1,19 @@
+{
+  "name": "coursera-react",
+  "version": "1.0.0",
+  "description": "Setting up package.json file for our course project",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/YJangir49/coursera-react.git"
+  },
+  "author": "Yogender Jangir",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/YJangir49/coursera-react/issues"
+  },
+  "homepage": "https://github.com/YJangir49/coursera-react#readme"
+}
