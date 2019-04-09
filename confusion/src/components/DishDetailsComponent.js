@@ -2,14 +2,6 @@ import React, {Component} from 'react'
 import {CardImg,Card,CardBody,CardTitle,CardText} from 'reactstrap'
 class DishDetail extends Component {
 
-    constructor(props)
-    {
-        super(props);
-        this.state={
-            dish: null
-        };
-    }
-
     renderDish(dish){
         if(dish!=null)
         {
@@ -30,34 +22,40 @@ class DishDetail extends Component {
     }
     
     renderComments(comments){
-        var commentList = comments.map(cmt => {
-            return(
-                <li key={cmt.id}>
-                  {cmt.comment}
-                  <br/><br/>
-                  --{cmt.author},{" "}{cmt.date.substring(0,10)}
-                  <br/><br/>
-                </li>
-            );
-        });
+        if(comments!=null)
+        {
+            var commentList = comments.map(cmt => {
+                return(
+                    <div key={cmt.id}>
+                        <ul className="list-unstyled">
+                            <li>{cmt.comment}</li>
+                            <li>-- {cmt.author}, {new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day: '2-digit'}).format(new Date(Date.parse(cmt.date)))}</li>  
+                        </ul>  
+                    </div>
+                );
+            });
+        }
+       
         return(
             <div>
                 <h4>Comments</h4>
-                <ul className="list-unstyled"> {commentList} </ul>
+                 {commentList}
             </div>
         )
 }
      render(){
-         if(this.props.details){
+         if(this.props.dish!=null){
              return(
-                 <div className="row">
-                    <div className="col-12 col-md-5 m-1">
-                         {this.renderDish(this.props.details)}
+                    <div className='container'>
+                        <div className="row">
+                            <div className="col-12 col-md-5 m-1">
+                                {this.renderDish(this.props.dish)}
+                            </div>
+                            <div className="col-12 col-md-5 m-1">
+                                {this.renderComments(this.props.dish.comments)}
+                            </div>
+                        </div>
                     </div>
-                    <div className="col-12 col-md-5 m-1">
-                        {this.renderComments(this.props.details.comments)}
-                    </div>
-                 </div>
                  
              )
          }
