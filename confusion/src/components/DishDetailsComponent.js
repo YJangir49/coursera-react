@@ -13,15 +13,13 @@ class CommentForm extends Component {
         this.state={
             isModalOpen: false
         }
-        this.toggleModal=this.toggleModal.bind(this);
     }
         
-        handleSubmit(val) {
-            alert("Current State = "+ JSON.stringify(val));
-            
+        handleSubmit=(val)=> {
+            this.props.addComment(this.props.dishId, val.rating, val.author, val.comment);
         }
         
-        toggleModal(){
+        toggleModal =()=>{
             this.setState({
                 isModalOpen: !this.state.isModalOpen
             })
@@ -36,7 +34,7 @@ class CommentForm extends Component {
                 <ModalBody >
                         <LocalForm onSubmit={(val)=>this.handleSubmit(val)}>
                             <Row className="form-group">
-                                <Label md htmlFor="rating">Rating</Label>
+                                <Label htmlFor="rating">Rating</Label>
                                 <Col md={12}>
                                     <Control.select  model=".rating" id="rating" name="rating"
                                         className="form-control">
@@ -50,7 +48,7 @@ class CommentForm extends Component {
                                  </Col>   
                             </Row>
                             <Row className="form-group">
-                                <Label md htmlFor="author">Your Name</Label>
+                                <Label htmlFor="author">Your Name</Label>
                                 <Col md={12}>
                                     <Control.text model=".author" id="author" name="author" placeholder="Your Name" 
                                     className="form-control"
@@ -70,7 +68,7 @@ class CommentForm extends Component {
                                 </Col>
                             </Row>
                             <Row className="form-group">
-                                <Label md htmlFor="comment">Comment</Label>
+                                <Label htmlFor="comment">Comment</Label>
                                 <Col md={12}>
                                     <Control.textarea model=".comment" name="comment" rows="6"
                                     className="form-control"
@@ -106,7 +104,7 @@ class CommentForm extends Component {
         );
     }
     
-    function RenderComments({ comments }) {
+    function RenderComments({ comments, addComment, dishId }) {
         if (comments != null) {
           return (
             <div className="text-left">
@@ -124,7 +122,7 @@ class CommentForm extends Component {
                 })}
               </ul>
               <Row>
-                <CommentForm />
+                <CommentForm  dishId={dishId} addComment={addComment}/>
               </Row>
             </div>
           );
@@ -153,7 +151,9 @@ class CommentForm extends Component {
                                 <RenderDish dish={props.dish}/>
                             </div>
                             <div className="col-12 col-md-5 m-1">
-                                <RenderComments comments={props.comments}/>
+                                <RenderComments comments={props.comments} 
+                                addComment={props.addComment}
+                                dishId={props.dish.id}/>
                             </div>
                         </div>
                     </div> 
