@@ -120,16 +120,20 @@ class CommentForm extends Component {
             <div className="text-left">
               <h4>Comments</h4>
               <ul className="list-unstyled">
-                {comments.map((comment) => {
-                  return (
-                    <div key={comment.id}>
-                      <li>
-                        <p>{comment.comment}</p>
-                        <p>-- {comment.author}, {new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day: '2-digit' }).format(new Date(Date.parse(comment.date)))}</p>
-                      </li>
-                    </div>
-                  );
-                })}
+                <Stagger in>
+                    {comments.map((comment) => {
+                    return (
+                        <Fade in>
+                            <div key={comment.id}>
+                            <li>
+                                <p>{comment.comment}</p>
+                                <p>-- {comment.author}, {new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day: '2-digit' }).format(new Date(Date.parse(comment.date)))}</p>
+                            </li>
+                            </div>
+                        </Fade>
+                    );
+                    })}
+                </Stagger>
               </ul>
               <Row>
                 <CommentForm  dishId={dishId} postComment={postComment}/>
