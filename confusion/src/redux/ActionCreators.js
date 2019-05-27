@@ -1,5 +1,4 @@
-import * as ActionTypes from './ActionTypes' 
-import { DISHES } from '../shared/dishes';
+import * as ActionTypes from './ActionTypes';
 import {baseUrl} from '../shared/baseUrl'; 
 
 export const addComment =(comment)=>({
@@ -87,7 +86,7 @@ export const postFeedback=(firstname,lastname,telnum,email,agree,contactType,mes
 
             .then(response=> response.json())
             .then(response=>dispatch(addFeedback(response)))
-            .catch(error=>  { console.log('Post Comments', error.message); alert('Your comment could not be posted\nError: '+error.message);})
+            .catch(error=>  { console.log('Post Comments', error.message); alert('Your comment could not be posted\nError: ' + error.message);})
 };
 
 

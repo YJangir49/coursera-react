@@ -1,4 +1,4 @@
-import React,{Component} from 'react'
+import React from 'react'
 import {Navbar, NavbarBrand, NavItem, Jumbotron, Collapse, NavbarToggler,Nav,Modal,ModalBody,ModalHeader,Button,Form,FormGroup,Label,Input } from  'reactstrap'
 import {NavLink} from 'react-router-dom'
 class Header extends React.Component{

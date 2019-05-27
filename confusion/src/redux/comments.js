@@ -1,6 +1,4 @@
-import { COMMENTS } from '../shared/comments';
 import * as ActionTypes from './ActionTypes';
-import { Action } from 'rxjs/internal/scheduler/Action';
 
 export const Comments = (state = {
     errMess: null,

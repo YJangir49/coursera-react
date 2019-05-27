@@ -1,5 +1,5 @@
 import React from 'react'
-import {Card, CardBody, CardTitle, CardImg, CardImgOverlay, CardText, Breadcrumb,BreadcrumbItem} from 'reactstrap'
+import {Card, CardTitle, CardImg, CardImgOverlay, Breadcrumb,BreadcrumbItem} from 'reactstrap'
 import {Link} from 'react-router-dom'
 import { Loading } from './LoadingComponent';
 import { baseUrl } from '../shared/baseUrl';

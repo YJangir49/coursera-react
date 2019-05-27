@@ -1,6 +1,3 @@
-import { PROMOTIONS } from '../shared/promotion';
-import { actionTypes } from 'react-redux-form';
-import { Action } from 'rxjs/internal/scheduler/Action';
 import * as ActionTypes from './ActionTypes'
 
 export const Promotions = (state = {
